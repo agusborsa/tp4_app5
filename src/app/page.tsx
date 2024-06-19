@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
 import { Lista } from "./Modelo";
-import Link from 'next/link'
+import Link from "next/link";
 import { api } from "./utils";
 import Ciudad from "../components/Ciudad";
 
@@ -12,12 +12,10 @@ export default function Home() {
   const [listado, setListado] = useState<Lista>(LISTA_INICIAL);
 
   useEffect(() => {
-    api<Lista>('/v1/listado')
-      .then((data: Lista) => {
-        setListado(data);
-      })
+    api<Lista>("/v1/listado").then((data: Lista) => {
+      setListado(data);
+    });
   }, []);
-
 
   return (
     <>
@@ -27,12 +25,14 @@ export default function Home() {
         Agregar Destino
       </Link>
 
-      <div className="grid flex 
+      <div
+        className="grid flex 
         lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 
-        gap-8 p-4">
-        {listado.itinerarios.map(c =>
+        gap-8 p-4"
+      >
+        {listado.itinerarios.map((c) => (
           <Ciudad key={c.id} ciudad={c}></Ciudad>
-        )}
+        ))}
       </div>
     </>
   );
