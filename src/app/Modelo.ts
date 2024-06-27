@@ -5,6 +5,7 @@ export interface Viaje {
     fin: Date;
 }
 export interface Actividad {
+  id: number;
   inicio: Date;
   fin: Date;
   nombre: string;

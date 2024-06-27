@@ -19,6 +19,7 @@ export default function Home() {
 
   // La funcion que se llama al mandar el formulario
   const enviarFormulario = async (formData: FormData) => {
+    setFormulario({mensaje: "loading...", status: true})
     const destino = formData.get("destino");
     const viajero = formData.get("viajero");
     const inicio = formData.get("inicio");
@@ -38,9 +39,11 @@ export default function Home() {
         fin: new Date(fin.toString()),
       };
 
-      agregarItinerario(params)
+      await agregarItinerario(params)
         .then(setFormulario)
-        .then(() => redirect("/"));
+      
+      redirect("/")
+     
     }
   };
 
@@ -60,7 +63,8 @@ export default function Home() {
         <div role="alert" className="alert alert-info">
           <span>{formulario?.mensaje}</span>
         </div>
-      ) : formulario.mensaje ? (
+      ) : formulario.mensaje ?
+      (
         <div role="alert" className="alert alert-success">
           <span>{formulario?.mensaje}</span>
         </div>
