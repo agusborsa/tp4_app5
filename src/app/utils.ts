@@ -1,13 +1,22 @@
 import { Itinerario } from "./Modelo";
 
 // utils.ts
-export async function api<T>(url: string): Promise<T> {
+/* export async function api<T>(url: string): Promise<T> {
     const urlCompleta = `${process.env.NEXT_PUBLIC_URL_API}${url}`;
     const response = await fetch(urlCompleta);
     if (!response.ok) {
         throw new Error(response.statusText);
     }
     return await (response.json() as Promise<T>);
+}
+ */
+export async function api<T>(url: string): Promise<T> {
+    const urlCompleta = `${process.env.NEXT_PUBLIC_URL_API}${url}`;
+    const response = await fetch(urlCompleta);
+    if (!response.ok) {
+        throw new Error(response.statusText);
+    }
+    return await response.json() as T;
 }
 
 export interface AgregarItinerarioParams { destino: string, viajero: string, inicio: Date, fin: Date};

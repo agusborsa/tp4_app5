@@ -20,7 +20,7 @@ export default function Home() {
 
   return (
     <>
-      <h1 className="text-3xl mb-8">Lista</h1>
+      <h1 className="text-3xl mb-8">Tu lista de itinerarios</h1>
 
       <Link href="/agregar" className="btn btn-primary" prefetch={true}>
         Agregar Destino
