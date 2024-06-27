@@ -4,7 +4,7 @@ import { Itinerario } from '../Modelo'
 import { api } from '../utils'
 
 
-const Mostrar = (act: Actividad) => {
+const Mostrar = (/* act: Actividad */) => {
  /*  return (
      act.map(a =>{
         return (
