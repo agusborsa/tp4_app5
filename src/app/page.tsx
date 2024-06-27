@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Lista } from "./Modelo";
 import Link from 'next/link'
 import { api } from "./utils";
-import Ciudad from "../components/Ciudad";
+import Itinerario from "../components/Itinerario";
 
 const LISTA_INICIAL: Lista = { itinerarios: [] };
 
@@ -18,7 +18,6 @@ export default function Home() {
       })
   }, []);
 
-
   return (
     <>
       <h1 className="text-3xl mb-8">Lista</h1>
@@ -27,11 +26,11 @@ export default function Home() {
         Agregar Destino
       </Link>
 
-      <div className="grid flex 
+      <div className="flex 
         lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 
         gap-8 p-4">
-        {listado.itinerarios.map(c =>
-          <Ciudad key={c.id} ciudad={c}></Ciudad>
+        {listado.itinerarios.map(i =>
+          <Itinerario key={i.id} itinerario={i}></Itinerario>
         )}
       </div>
     </>

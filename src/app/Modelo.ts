@@ -3,21 +3,21 @@ export interface Viaje {
     viajero: string;
     inicio: Date;
     fin: Date;
-  }
-  export interface Actividad {
-    inicio: Date;
-    fin: Date;
-    nombre: string;
-    descripcion: string;
-  }
-  export interface Itinerario {
-    id: number,
-    viaje: Viaje,
-    actividades: Actividad[]
-  }
-  export interface Lista {
-    itinerarios: Itinerario[]
-  }
+}
+export interface Actividad {
+  inicio: Date;
+  fin: Date;
+  nombre: string;
+  descripcion: string;
+}
+export interface Itinerario {
+  id: number,
+  viaje: Viaje,
+  actividades: Actividad[]
+}
+export interface Lista {
+  itinerarios: Itinerario[]
+}
 
   /* export interface Ciudad {
     id: number,

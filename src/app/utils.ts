@@ -1,4 +1,4 @@
-import { Ciudad } from "./Modelo";
+import { Itinerario } from "./Modelo";
 
 // utils.ts
 export async function api<T>(url: string): Promise<T> {
@@ -10,12 +10,11 @@ export async function api<T>(url: string): Promise<T> {
     return await (response.json() as Promise<T>);
 }
 
+export interface AgregarItinerarioParams { destino: string, viajero: string, inicio: Date, fin: Date};
+export interface AgregarItinerarioRespuesta { mensaje: string, status: boolean }
 
-export interface AgregarCiudadParams { nombre: string };
-export interface AgregarCiudadRespuesta { mensaje: string }
-
-export async function agregarCiudad(params: AgregarCiudadParams): Promise<AgregarCiudadRespuesta> {
-    const urlCompleta = `${process.env.NEXT_PUBLIC_URL_API}/v1/ciudad/agregar`;
+export async function agregarItinerario(params: AgregarItinerarioParams): Promise<AgregarItinerarioRespuesta> {
+    const urlCompleta = `${process.env.NEXT_PUBLIC_URL_API}/v1/itinerario/agregar`;
 
     const response = await fetch(urlCompleta, {
         method: 'POST',
@@ -27,11 +26,11 @@ export async function agregarCiudad(params: AgregarCiudadParams): Promise<Agrega
 
     if (!response.ok) {
         var body = await response.text();
-        return { mensaje: `Error agregando ciudad: ${body}` };
+        return { mensaje: `Error agregando itinerario: ${body}`, status: false};
     }
     else {
-        var ciudad = await (response.json() as Promise<Ciudad>);
-        return { mensaje: `Ciudad ${ciudad.nombre} agregada con exito!` };
+        var itinerario = await (response.json() as Promise<Itinerario>);
+        return { mensaje: `Itinerario agregado con éxito!`, status: true};
     }
 }
 
