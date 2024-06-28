@@ -30,7 +30,7 @@ export default function Home() {
         lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 
         p-4 justify-between gap-2">
           {listado.itinerarios.map(i =>         
-            <Link key={i.id} href="/mostrar" className="">
+            <Link key={i.id} href={`./mostrar/${i.id}`} className="">
               <ItinerarioItem key={i.id} itinerario={i}></ItinerarioItem>
             </Link>
           )}
