@@ -1,18 +1,21 @@
 // Itinerario.tsx
+import Link from "next/link";
 import type { Itinerario } from "../app/Modelo";
 
 interface ItinerarioProps {
     itinerario: Itinerario;
+    handleDelete: (id: number) => void;
 }
 
 export default function ItinerarioItem(props: ItinerarioProps) {
-    return (
-        <div className="bg-neutral">
-            <div className="flex justify-between">
-                <h3 className="font-bold text-2xl m-4">{props.itinerario.id}</h3>
-                <button className="btn btn-sm btn-circle btn-ghost">✕</button>
+    return (       
+        <div className="bg-sky-700 p-6 rounded-lg shadow-md block transition-transform transform hover:scale-105">
+            <div className="flex justify-between items-center mb-4">
+                <button onClick={() => props.handleDelete(props.itinerario.id)} className="btn btn-sm btn-circle btn-ghost text-white">✕</button>    
             </div>
-            <p className="mb-10 text-5xl center text-center">{props.itinerario.id}</p>
-        </div>    
-    )
+            <Link key={props.itinerario.id} href={`./mostrar/${props.itinerario.id}`}>              
+                <p className="text-5xl text-center text-white mb-6">{props.itinerario.id}</p>
+            </Link>
+        </div>      
+    );
 }

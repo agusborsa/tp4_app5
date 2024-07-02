@@ -33,3 +33,23 @@ export async function agregarItinerario(params: AgregarItinerarioParams): Promis
         return { mensaje: `Itinerario agregado con éxito!`, status: true};
     }
 }
+
+export async function borrarItinerario(id: number): Promise<string> {
+    const urlCompleta = `${process.env.NEXT_PUBLIC_URL_API}/v1/itinerario/borrar/`;
+
+    const response = await fetch(urlCompleta, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({id})
+    });
+
+    if (!response.ok) {
+        var body = await response.text();
+        return `Error borrando itinerario: ${body}`;
+    }
+    else {
+        return `Itinerario borrado con éxito!`;
+    }
+}
