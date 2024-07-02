@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Itinerario, Lista } from "./Modelo";
 import Link from 'next/link'
 import { api } from "./utils";
@@ -21,12 +21,12 @@ export default function Home() {
       })
   },[deleted])
   
-  const handleDelete = async (id: number) => {
+  const handleDelete = useCallback(async (id: number) => {
     setMensaje("borrando...")
     const respuesta = await borrarItinerario(id);
     setMensaje(respuesta);
     setDeleted(!deleted);
-  }
+  }, [listado])
 
   return (
     <>
